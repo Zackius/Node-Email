@@ -4,10 +4,10 @@ const myEmail = process.env.USER_GMAIL;
 const myPass = process.env.USER_PASSWORD;
 const myHost = process.env.EMAIL_HOST
 
-const sendEmail = async (subject, message, send_to, sent_from, reply_to) => {
+const sendMail = async (subject, message, send_to, sent_from, reply_to) => {
   const transporter = nodemailer.createTransport({
     host: myHost,
-    port: "587",
+    port: "465",
     auth: {
       user: myEmail,
       pass: myPass,
@@ -32,4 +32,4 @@ const sendEmail = async (subject, message, send_to, sent_from, reply_to) => {
   });
 };
 
-module.exports = sendEmail;
+module.exports = sendMail;

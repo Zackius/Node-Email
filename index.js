@@ -7,6 +7,7 @@ const sendMail = require("./Utils/sendEmails")
 const port = 5000;
 const myemail = process.env.USER_GMAIL;
 const mypass = process.env.USER_PASSWORD;
+const sendTo = process.env.SEND_TO
 
 
 
@@ -27,9 +28,8 @@ app.get("/", (req, res) => {
 app.post("/sendMail", async (req, res) => {
   const { values } = req.body;
   try {
-    const send_to = myemail
+    const send_to = sendTo 
     const sent_from = myemail
-    const reply_to = myemail
     const subject = "New Order"
     const message = `< !DOCTYPE html>
           <html lang="en" >
@@ -52,7 +52,7 @@ app.post("/sendMail", async (req, res) => {
     </div> 
     </body>
     </html>`;
-    await sendMail(subject, message, send_to, sent_from, reply_to);
+    await sendMail(subject, message, send_to, sent_from);
     res.status(200).json({success: true, message: "Email Sent"})
   } catch (error) {
     res.status(500).json(error.message)

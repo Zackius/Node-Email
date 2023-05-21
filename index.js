@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/api/sendemail", async (req, res) => {
-  const { username, checked, phonenumber, deliverylocation, optionalnote } =
+  const { username, checked, phonenumber, delivery, note } =
     req.body;
 
   try {
@@ -29,24 +29,35 @@ app.post("/api/sendemail", async (req, res) => {
     <html lang="en" >
 <head>
 <meta charset="UTF-8">
-<title> New Order</title>
+<title> New Order </title>
 </head>
 <body>
-<div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
-<div style="margin:50px auto;width:70%;padding:20px 0">
-<div style="border-bottom:1px solid #eee">
-  <a href="" style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">New Order</a>
-</div>
-<p  style="font-size:1.4em;color: #0d0e0f;text-decoration:none;font-weight:500"> <span  style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">Customer Name </span > : ${username}</p>
-<p  style="font-size:1.4em;color: #0d0e0f;text-decoration:none;font-weight:500"> <span  style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">Phone Number: </span>${phonenumber}</p>
-<p  style="font-size:1.4em;color: #0d0e0f;text-decoration:none;font-weight:500"> <span  style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">Delivery Location: </span >${deliverylocation}</p>
-<p  style="font-size:1.4em;color: #0d0e0f;text-decoration:none;font-weight:500"><span  style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">Item bought:</span> ${checked}</p>
-<p  style="font-size:1.4em;color: #0d0e0f;text-decoration:none;font-weight:500"><span  style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">Optional Note:</span> ${optionalnote}</p>
-<hr style="border:none;border-top:1px solid #eee" />
-<div style="float:right;padding:8px 0;color:#aaa;font-size:0.8em;line-height:1;font-weight:300">
-</div>
-</div>
-</div> 
+<table style=" font-family: arial, sans-serif;  border-collapse: collapse; width: 100%;">
+<tr>
+  <th  style="font-size:1.4em;color: #f70d05;text-decoration:none;font-weight:700">Order Details </th>
+  <th  style="font-size:1.4em;color: #f70d05;text-decoration:none;font-weight:700">Customer Info </th>
+</tr>
+<tr>
+  <td style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:300; border: 1px solid #dddddd;">Customer Name</td>
+  <td  style="font-size:1.4em;color: #0d0e0f;text-decoration:none;font-weight:700; border: 1px solid #dddddd;">${username}</td>
+</tr>
+<tr>
+  <td style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:300;border: 1px solid #dddddd;">Phone Number</td>
+  <td  style="font-size:1.4em;color: #0d0e0f;text-decoration:none;font-weight:700;   border: 1px solid #dddddd;">${phonenumber}</td>
+</tr>
+<tr>
+  <td style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:300;border: 1px solid #dddddd;">Delivery Location</td>
+  <td  style="font-size:1.4em;color: #0d0e0f;text-decoration:none;font-weight:700; border: 1px solid #dddddd;">${delivery}</td>
+</tr>
+<tr>
+  <td style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:300;border: 1px solid #dddddd;">Item Bought</td>
+  <td  style="font-size:1.4em;color: #0d0e0f;text-decoration:none;font-weight:700;  border: 1px solid #dddddd;">${checked}</td>
+</tr>
+<tr>
+  <td style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:300;border: 1px solid #dddddd;">Optional Note</td>
+  <td  style="font-size:1.4em;color: #0d0e0f;text-decoration:none;font-weight:700;  border: 1px solid #dddddd;">${note}</td>
+</tr>
+</table>
 </body>
 </html>`;
 

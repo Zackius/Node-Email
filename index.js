@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/api/sendemail", async (req, res) => {
-  const {username, checked, phonenumber, deliverylocation, optionalnote}=
+  const { username, checked, phonenumber, deliverylocation, optionalnote } =
     req.body;
 
   try {
@@ -37,20 +37,11 @@ app.post("/api/sendemail", async (req, res) => {
 <div style="border-bottom:1px solid #eee">
   <a href="" style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">New Order</a>
 </div>
-<p> <span  style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">Customer Name </span> : ${ username
-    }</p>
-<p> <span  style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">Phone Number: </span>${{
-      phonenumber
-    }}</p>
-<p> <span  style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">Delivery Location: </span>${{
-      deliverylocation
-    }}</p>
-<p><span  style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">Item bought:</span> ${{
-      checked
-    }}</p>
-<p><span  style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">Optional Note:</span> ${{
-      optionalnote
-    }}</p>
+<p  style="font-size:1.4em;color: #0d0e0f;text-decoration:none;font-weight:500"> <span  style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">Customer Name </span > : ${username}</p>
+<p  style="font-size:1.4em;color: #0d0e0f;text-decoration:none;font-weight:500"> <span  style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">Phone Number: </span>${phonenumber}</p>
+<p  style="font-size:1.4em;color: #0d0e0f;text-decoration:none;font-weight:500"> <span  style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">Delivery Location: </span >${deliverylocation}</p>
+<p  style="font-size:1.4em;color: #0d0e0f;text-decoration:none;font-weight:500"><span  style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">Item bought:</span> ${checked}</p>
+<p  style="font-size:1.4em;color: #0d0e0f;text-decoration:none;font-weight:500"><span  style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">Optional Note:</span> ${optionalnote}</p>
 <hr style="border:none;border-top:1px solid #eee" />
 <div style="float:right;padding:8px 0;color:#aaa;font-size:0.8em;line-height:1;font-weight:300">
 </div>

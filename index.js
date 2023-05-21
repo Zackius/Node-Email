@@ -4,11 +4,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const sendEmail = require("./Utils/sendEmails");
 const app = express();
-
-
-const myemail = process.env.USER_GMAIL;
-const mypass = process.env.USER_PASSWORD;
-const sendTo = process.env.SEND_TO
+const sendTo = process.env.SEND_TO;
 
 // Middleware
 app.use(express.json());
@@ -21,18 +17,19 @@ app.get("/", (req, res) => {
 });
 
 app.post("/api/sendemail", async (req, res) => {
-  const { values} = req.body;
+  const {username, checked, phonenumber, deliverylocation, optionalnote}=
+    req.body;
 
   try {
     const send_to = sendTo;
-    const sent_from = sendTo
+    const sent_from = sendTo;
     const reply_to = sendTo;
     const subject = "New Order";
-    const message = `< !DOCTYPE html>
+    const message = `
     <html lang="en" >
 <head>
 <meta charset="UTF-8">
-<title>CodePen - OTP Email Template</title>
+<title> New Order</title>
 </head>
 <body>
 <div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
@@ -40,15 +37,27 @@ app.post("/api/sendemail", async (req, res) => {
 <div style="border-bottom:1px solid #eee">
   <a href="" style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">New Order</a>
 </div>
-<p>Customer Name : ${values}</p>
-
+<p> <span  style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">Customer Name </span> : ${ username
+    }</p>
+<p> <span  style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">Phone Number: </span>${{
+      phonenumber
+    }}</p>
+<p> <span  style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">Delivery Location: </span>${{
+      deliverylocation
+    }}</p>
+<p><span  style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">Item bought:</span> ${{
+      checked
+    }}</p>
+<p><span  style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">Optional Note:</span> ${{
+      optionalnote
+    }}</p>
 <hr style="border:none;border-top:1px solid #eee" />
 <div style="float:right;padding:8px 0;color:#aaa;font-size:0.8em;line-height:1;font-weight:300">
 </div>
 </div>
 </div> 
 </body>
-</html>` 
+</html>`;
 
     await sendEmail(subject, message, send_to, sent_from, reply_to);
     res.status(200).json({ success: true, message: "Email Sent" });

@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const sendEmail = require("./Utils/sendEmails");
 const app = express();
 const sendTo = process.env.SEND_TO;
+const myPort = process.env.PORT;
 
 // Middleware
 app.use(express.json());
@@ -16,9 +17,9 @@ app.get("/", (req, res) => {
   res.send("Home Page");
 });
 
+//POST
 app.post("/api/sendemail", async (req, res) => {
-  const { username, checked, phonenumber, delivery, note } =
-    req.body;
+  const { username, checked, phonenumber, delivery, note } = req.body;
 
   try {
     const send_to = sendTo;
@@ -68,7 +69,7 @@ app.post("/api/sendemail", async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}...`);
+const port = myPort || 5000;
+app.listen(port, () => {
+  console.log(`Server running on port ${port}...`);
 });

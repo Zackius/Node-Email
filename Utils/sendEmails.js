@@ -11,6 +11,9 @@ const sendEmail = async (subject, message, send_to, sent_from, reply_to) => {
     host: emailPost,
     port: "465",
     secure: true,
+    logger: true,
+    debug: true,
+    secureConnection: true,
     auth: {
       user: sendTo,
       pass: myPass,

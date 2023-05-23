@@ -9,12 +9,12 @@ const emailPost = process.env.EMAIL_POST;
 const sendEmail = async (subject, message, send_to, sent_from, reply_to) => {
   const transporter = nodemailer.createTransport({
     host: emailPost,
-    port: "465",
+    port: "587 pop 3",
     secure: true,
     logger: true,
     secureConnection: true,
     auth: {
-      user: sendTo,
+      user: myEmail,
       pass: myPass,
     },
   });

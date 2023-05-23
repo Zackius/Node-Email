@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const sendEmail = require("./Utils/sendEmails");
 const app = express();
 const sendTo = process.env.SEND_TO;
-const myPort = process.env.PORT;
+const myEmail = process.env.USER_GMAIL
 
 // Middleware
 app.use(express.json());
@@ -23,7 +23,7 @@ app.post("/api/sendemail", async (req, res) => {
 
   try {
     const send_to = sendTo;
-    const sent_from = sendTo;
+    const sent_from = myEmail;
     const reply_to = sendTo;
     const subject = "New Order";
     const message = `
